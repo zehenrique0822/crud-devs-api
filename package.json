@@ -1,0 +1,7 @@
+{
+  "name": "crud-devs-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "José Henrique <jose.nascimento@agenziamkt.com.br>",
+  "license": "MIT"
+}
