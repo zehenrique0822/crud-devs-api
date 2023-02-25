@@ -6,7 +6,8 @@ interface ILevelRepositoryDTO {
 }
 
 interface ILevelsRepository {
-  create: (level: ILevelRepositoryDTO) => Promise<Levels>
+  create: (level: string) => Promise<Levels>
+  findOne: (level: string) => Promise<Levels | null>
 }
 
 export type {
