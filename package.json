@@ -5,6 +5,7 @@
   "author": "José Henrique <jose.nascimento@agenziamkt.com.br>",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.1",
     "git-commit-msg-linter": "^4.7.4",
@@ -15,7 +16,11 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "dev": "npx nodemon --exec ts-node src/server.ts",
     "test": "jest",
     "test:unit": "npm test -- --watch -c jest-unit-config.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
