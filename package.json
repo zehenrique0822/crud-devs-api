@@ -26,12 +26,16 @@
   },
   "scripts": {
     "dev": "npx nodemon --exec ts-node src/server.ts",
+    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
     "lint": "eslint ./**/*.ts --fix",
     "prepare": "husky install",
     "test": "jest",
     "test:unit": "npm test -- --watch -c jest-unit-config.ts"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg": "^8.9.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.12"
   }
 }
