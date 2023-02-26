@@ -13,7 +13,7 @@ class DeleteLevelsUseCase {
   async execute (id: number): Promise<void> {
     const foundLevel = await this.repository.findOne({ id }, ["developers"])
 
-    if (!foundLevel) throw new AppError("O nível não foi existe!", 400)
+    if (!foundLevel) throw new AppError("O nível não existe!", 400)
 
     if (foundLevel.developers?.length) {
       throw new AppError(

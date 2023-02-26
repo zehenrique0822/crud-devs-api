@@ -14,7 +14,7 @@ class UpdateLevelsUseCase {
 
   async execute (id: number, level: string): Promise<Levels | null> {
     const foundLevel = await this.repository.findOne({ id })
-    if (!foundLevel) throw new AppError('O nível não foi existe!', 400)
+    if (!foundLevel) throw new AppError('O nível não existe!', 400)
 
     const foundByLevel = await this.repository.find({
       level,
