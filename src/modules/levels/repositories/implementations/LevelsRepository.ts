@@ -10,6 +10,20 @@ class LevelsRepository implements ILevelsRepository {
     this.repository = AppDataSource.getRepository(Levels)
   }
 
+  async find (
+    where: { [key: string]: any },
+    relations?: string[],
+    order?: { [key: string]: any }
+  ): Promise<Levels[] | null> {
+    const foundLevels = await this.repository.find({
+      where,
+      relations,
+      order
+    })
+
+    return foundLevels
+  }
+
   async findOne (
     where: { [key: string]: any },
     relations?: string[],
@@ -47,6 +61,12 @@ class LevelsRepository implements ILevelsRepository {
     const data = await query.getManyAndCount()
 
     return data
+  }
+
+  async update (id: number, level: string): Promise<Levels | null> {
+    await this.repository.update(id, { level })
+    const updatedLevel = await this.repository.findOne({ where: { id } })
+    return updatedLevel
   }
 }
 
