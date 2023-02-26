@@ -29,8 +29,6 @@ class LevelsRepository implements ILevelsRepository {
     relations?: string[],
     order?: { [key: string]: any }
   ): Promise<Levels | null> {
-    console.log(where)
-    console.log(relations)
     const foundLevel = await this.repository.findOne({
       where,
       relations,
