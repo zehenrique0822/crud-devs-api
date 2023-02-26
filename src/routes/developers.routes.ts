@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { CreateDevelopersController } from '../src/modules/developers/repositories/useCases/create/CreateDevelopersController'
-import { DeleteDevelopersController } from '../src/modules/developers/repositories/useCases/delete/DeleteLevelsController'
-import { ListDevelopersController } from '../src/modules/developers/repositories/useCases/list/ListDevelopersController'
-import { UpdateDevelopersController } from '../src/modules/developers/repositories/useCases/update/UpdateDevelopersController'
+import { CreateDevelopersController } from '../modules/developers/repositories/useCases/create/CreateDevelopersController'
+import { DeleteDevelopersController } from '../modules/developers/repositories/useCases/delete/DeleteLevelsController'
+import { ListDevelopersController } from '../modules/developers/repositories/useCases/list/ListDevelopersController'
+import { UpdateDevelopersController } from '../modules/developers/repositories/useCases/update/UpdateDevelopersController'
 
 const developersRouter = Router()
 
