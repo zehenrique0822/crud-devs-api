@@ -18,6 +18,7 @@
       "@typescript-eslint/no-misused-promises": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/consistent-indexed-object-style": "off",
-      "@typescript-eslint/quotes": "off"
+      "@typescript-eslint/quotes": "off",
+      "@typescript-eslint/naming-convention": "off"
     }
 }

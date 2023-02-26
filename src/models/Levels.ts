@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import Developers from './Developers'
 
 @Entity('levels')
@@ -9,8 +9,7 @@ class Levels {
   @Column()
     level: string
 
-  @ManyToOne(() => Developers)
-  @JoinColumn({ name: 'id', referencedColumnName: 'id_level' })
+  @OneToMany(() => Developers, developer => developer.level)
     developers: Developers[]
 }
 
