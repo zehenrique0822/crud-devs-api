@@ -1,7 +1,7 @@
 import { type Repository } from 'typeorm'
 import { AppDataSource } from '../../../../database/index'
 import Developers from '../../../../models/Developers'
-import { type IDevelopersRepository, type IDeveloperRepositoryDTO } from '../IDevelopersRepository'
+import { type IDevelopersRepository, type IDeveloperRepositoryDTO, type IPagination } from '../IDevelopersRepository'
 
 class DevelopersRepository implements IDevelopersRepository {
   private readonly repository: Repository<Developers>
@@ -42,6 +42,25 @@ class DevelopersRepository implements IDevelopersRepository {
     const createdDeveloper = this.repository.create(dto)
     await this.repository.save(createdDeveloper)
     return createdDeveloper
+  }
+
+  async list (pagination: IPagination): Promise<[Developers[], number]> {
+    const query = this.repository.createQueryBuilder('Developers')
+      .leftJoinAndSelect("Developers.level", "level")
+
+    if (pagination.search) {
+      query.where(`LOWER(Developers.name) LIKE '%${pagination.search.toLowerCase()}%'`)
+    }
+
+    if (pagination.skip && pagination.limit) {
+      query.skip(pagination.skip * pagination.limit).take(pagination.limit)
+    }
+
+    query.orderBy('Developers.id', 'ASC')
+
+    const data = await query.getManyAndCount()
+
+    return data
   }
 }
 

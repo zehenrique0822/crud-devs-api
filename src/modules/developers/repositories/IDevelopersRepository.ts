@@ -28,6 +28,7 @@ interface IDevelopersRepository {
     relations?: string[],
     order?: { [key: string]: any },
   ) => Promise<Developers | null>
+  list: (pagination: IPagination) => Promise<[Developers[], number]>
 }
 
 export type {
