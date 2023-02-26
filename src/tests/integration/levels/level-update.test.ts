@@ -5,7 +5,7 @@ describe('levels update', () => {
   const data: any = {}
 
   it('Should create a level', async () => {
-    const request = { level: 'Junior' }
+    const request = { level: 'Junior Example Test' }
     const response = await api.post('/levels').send(request)
 
     expect(response.status).toEqual(201)
@@ -22,5 +22,14 @@ describe('levels update', () => {
     expect(response.status).toEqual(200)
     expect(response.body[0].length).toBeGreaterThan(0)
     expect(foundCreatedLevel).toBeDefined()
+  })
+
+  it('Should level update', async () => {
+    const request = { level: 'Pleno Example Test' }
+
+    const response = await api.put(`/levels/${data.createdLevelId}`).send(request)
+
+    expect(response.status).toEqual(200)
+    expect(response.body.level).toEqual(request.level)
   })
 })
