@@ -25,6 +25,7 @@ interface ILevelsRepository {
   ) => Promise<Levels | null>
   list: (pagination: IPagination) => Promise<[Levels[], number]>
   update: (id: number, level: string) => Promise<Levels | null>
+  delete: (id: number) => Promise<void>
 }
 
 export type {

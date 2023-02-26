@@ -29,6 +29,8 @@ class LevelsRepository implements ILevelsRepository {
     relations?: string[],
     order?: { [key: string]: any }
   ): Promise<Levels | null> {
+    console.log(where)
+    console.log(relations)
     const foundLevel = await this.repository.findOne({
       where,
       relations,
@@ -67,6 +69,10 @@ class LevelsRepository implements ILevelsRepository {
     await this.repository.update(id, { level })
     const updatedLevel = await this.repository.findOne({ where: { id } })
     return updatedLevel
+  }
+
+  async delete (id: number): Promise<void> {
+    await this.repository.delete(id)
   }
 }
 

@@ -19,7 +19,7 @@ class ListLevelsController {
       return response.status(200).json(list)
     } catch (err) {
       if (err instanceof Error) {
-        return response.status(400).json({ error: err.message })
+        return response.status(404).json({ error: err.message })
       }
       return response.status(500).json({ error: err })
     }
