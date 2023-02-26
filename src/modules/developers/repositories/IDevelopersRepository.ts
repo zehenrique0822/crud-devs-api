@@ -30,6 +30,7 @@ interface IDevelopersRepository {
   ) => Promise<Developers | null>
   list: (pagination: IPagination) => Promise<[Developers[], number]>
   update: (dto: IDeveloperRepositoryDTO) => Promise<Developers | null>
+  delete: (id: number) => Promise<void>
 }
 
 export type {

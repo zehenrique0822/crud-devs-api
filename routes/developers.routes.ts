@@ -1,16 +1,19 @@
 import { Router } from 'express'
 import { CreateDevelopersController } from '../src/modules/developers/repositories/useCases/create/CreateDevelopersController'
+import { DeleteDevelopersController } from '../src/modules/developers/repositories/useCases/delete/DeleteLevelsController'
 import { ListDevelopersController } from '../src/modules/developers/repositories/useCases/list/ListDevelopersController'
 import { UpdateDevelopersController } from '../src/modules/developers/repositories/useCases/update/UpdateDevelopersController'
 
-const levelsRouter = Router()
+const developersRouter = Router()
 
 const createDevelopersController = new CreateDevelopersController()
 const listDevelopersController = new ListDevelopersController()
 const updateDevelopersController = new UpdateDevelopersController()
+const deleteDevelopersController = new DeleteDevelopersController()
 
-levelsRouter.post('/', createDevelopersController.handle)
-levelsRouter.get('/', listDevelopersController.handle)
-levelsRouter.put('/:id', updateDevelopersController.handle)
+developersRouter.post('/', createDevelopersController.handle)
+developersRouter.get('/', listDevelopersController.handle)
+developersRouter.put('/:id', updateDevelopersController.handle)
+developersRouter.delete('/:id', deleteDevelopersController.handle)
 
-export default levelsRouter
+export default developersRouter

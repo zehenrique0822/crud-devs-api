@@ -75,6 +75,10 @@ class DevelopersRepository implements IDevelopersRepository {
     const updatedLevel = await this.repository.findOne({ where: { id: dto.id } })
     return updatedLevel
   }
+
+  async delete (id: number): Promise<void> {
+    await this.repository.delete(id)
+  }
 }
 
 export { DevelopersRepository }
