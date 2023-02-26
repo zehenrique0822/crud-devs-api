@@ -29,6 +29,7 @@ interface IDevelopersRepository {
     order?: { [key: string]: any },
   ) => Promise<Developers | null>
   list: (pagination: IPagination) => Promise<[Developers[], number]>
+  update: (dto: IDeveloperRepositoryDTO) => Promise<Developers | null>
 }
 
 export type {

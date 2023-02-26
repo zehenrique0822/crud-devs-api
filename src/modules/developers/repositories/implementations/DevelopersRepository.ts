@@ -62,6 +62,19 @@ class DevelopersRepository implements IDevelopersRepository {
 
     return data
   }
+
+  async update (dto: IDeveloperRepositoryDTO): Promise<Developers | null> {
+    await this.repository.update({ id: dto.id }, {
+      id_level: dto.id_level,
+      name: dto.name,
+      gender: dto.gender,
+      date_birth: dto.date_birth,
+      age: dto.age,
+      hobby: dto.hobby
+    })
+    const updatedLevel = await this.repository.findOne({ where: { id: dto.id } })
+    return updatedLevel
+  }
 }
 
 export { DevelopersRepository }
