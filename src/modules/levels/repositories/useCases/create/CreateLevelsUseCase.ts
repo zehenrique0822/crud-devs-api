@@ -5,21 +5,21 @@ import type Levels from '../../../../../models/Levels'
 import { ILevelsRepository } from '../../ILevelsRepository'
 
 @injectable()
-class CreateLevelUseCase {
+class CreateLevelsUseCase {
   constructor (
     @inject('LevelsRepository')
-    private readonly levelsRepository: ILevelsRepository
+    private readonly repository: ILevelsRepository
   ) {}
 
   async execute (level: string): Promise<Levels> {
-    const foundLevel = await this.levelsRepository.findOne(level)
+    const foundLevel = await this.repository.findOne({ level })
 
     if (foundLevel) throw new AppError('Nível já cadastrado!', 400)
 
-    const createdLevel = await this.levelsRepository.create(level)
+    const createdLevel = await this.repository.create(level)
 
     return createdLevel
   }
 }
 
-export { CreateLevelUseCase }
+export { CreateLevelsUseCase }

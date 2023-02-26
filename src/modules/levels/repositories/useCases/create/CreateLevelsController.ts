@@ -2,11 +2,11 @@ import { type Request, type Response } from 'express'
 import { container } from 'tsyringe'
 import * as Yup from 'yup'
 
-import { CreateLevelUseCase } from './CreateLevelsUseCase'
+import { CreateLevelsUseCase } from './CreateLevelsUseCase'
 
 class CreateLevelsController {
   async handle (request: Request, response: Response): Promise<Response> {
-    const createLevelsUseCase = container.resolve(CreateLevelUseCase)
+    const createLevelsUseCase = container.resolve(CreateLevelsUseCase)
     try {
       const { level } = request.body
 
