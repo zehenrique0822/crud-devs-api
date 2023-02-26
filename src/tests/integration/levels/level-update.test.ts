@@ -1,4 +1,4 @@
-import type Levels from '../../../models/Levels'
+import { type ILevelRepositoryDTO } from '../../../modules/levels/repositories/ILevelsRepository'
 import { api } from '../../api'
 
 describe('levels update', () => {
@@ -17,7 +17,7 @@ describe('levels update', () => {
     const request = { search: '', skip: 0, limit: 0 }
     const response = await api.get('/levels').query(request)
 
-    const foundCreatedLevel: Levels = response?.body[0]?.find((level: Levels) => level.id === data.createdLevelId)
+    const foundCreatedLevel: ILevelRepositoryDTO = response?.body[0]?.find((level: ILevelRepositoryDTO) => level.id === data.createdLevelId)
 
     expect(response.status).toEqual(200)
     expect(response.body[0].length).toBeGreaterThan(0)
@@ -31,5 +31,21 @@ describe('levels update', () => {
 
     expect(response.status).toEqual(200)
     expect(response.body.level).toEqual(request.level)
+  })
+
+  it("Should delete level", async () => {
+    const response = await api.delete(`/levels/${data.createdLevelId}`)
+
+    expect(response.status).toEqual(204)
+
+    const getRequest = { search: '', skip: 0, limit: 0 }
+
+    const showLevelsAfterDelete = await api.get("/levels").query(getRequest)
+    expect(showLevelsAfterDelete.status).toEqual(200)
+
+    const foundLevel = showLevelsAfterDelete.body[0].find(
+      (level: ILevelRepositoryDTO) => level.id === data.createdLevelId
+    )
+    expect(foundLevel).toBeUndefined()
   })
 })
