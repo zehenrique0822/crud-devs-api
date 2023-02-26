@@ -1,5 +1,4 @@
 import { type IDeveloperRepositoryDTO } from '../../../modules/developers/repositories/IDevelopersRepository'
-import { type ILevelRepositoryDTO } from '../../../modules/levels/repositories/ILevelsRepository'
 import { api } from '../../api'
 
 describe('developers update', () => {
@@ -42,19 +41,23 @@ describe('developers update', () => {
     expect(foundCreatedDeveloper).toBeDefined()
   })
 
-  it("Should delete level", async () => {
-    const response = await api.delete(`/levels/${data.createdLevelId}`)
+  it('Should developer update', async () => {
+    const request = {
+      id_level: data.createdLevelId,
+      name: "Cristiano Ronaldo da Silva",
+      gender: "m",
+      date_birth: new Date("2000-04-02"),
+      age: 20,
+      hobby: "Jogar futebol"
+    }
 
-    expect(response.status).toEqual(204)
+    const response = await api.put(`/developers/${data.createdDeveloperId}`).send(request)
 
-    const getRequest = { search: '', skip: 0, limit: 0 }
-
-    const showLevelsAfterDelete = await api.get("/levels").query(getRequest)
-    expect(showLevelsAfterDelete.status).toEqual(200)
-
-    const foundLevel = showLevelsAfterDelete.body[0].find(
-      (level: ILevelRepositoryDTO) => level.id === data.createdLevelId
-    )
-    expect(foundLevel).toBeUndefined()
+    expect(response.status).toEqual(200)
+    expect(response.body.name).toEqual(request.name)
+    expect(response.body.gender).toEqual(request.gender)
+    expect(new Date(response.body.date_birth)).toEqual(request.date_birth)
+    expect(response.body.age).toEqual(request.age)
+    expect(response.body.hobby).toEqual(request.hobby)
   })
 })
