@@ -1,4 +1,5 @@
 import { type IDeveloperRepositoryDTO } from '../../../modules/developers/repositories/IDevelopersRepository'
+import { type ILevelRepositoryDTO } from '../../../modules/levels/repositories/ILevelsRepository'
 import { api } from '../../api'
 
 describe('developers update', () => {
@@ -59,5 +60,37 @@ describe('developers update', () => {
     expect(new Date(response.body.date_birth)).toEqual(request.date_birth)
     expect(response.body.age).toEqual(request.age)
     expect(response.body.hobby).toEqual(request.hobby)
+  })
+
+  it("Should delete developer", async () => {
+    const response = await api.delete(`/developers/${data.createdDeveloperId}`)
+
+    expect(response.status).toEqual(204)
+
+    const getRequest = { search: '', skip: 0, limit: 0 }
+
+    const showDevelopersAfterDelete = await api.get("/developers").query(getRequest)
+    expect(showDevelopersAfterDelete.status).toEqual(200)
+
+    const foundLevel = showDevelopersAfterDelete.body[0].find(
+      (level: IDeveloperRepositoryDTO) => level.id === data.createdDeveloperId
+    )
+    expect(foundLevel).toBeUndefined()
+  })
+
+  it("Should delete level", async () => {
+    const response = await api.delete(`/levels/${data.createdLevelId}`)
+
+    expect(response.status).toEqual(204)
+
+    const getRequest = { search: '', skip: 0, limit: 0 }
+
+    const showLevelsAfterDelete = await api.get("/levels").query(getRequest)
+    expect(showLevelsAfterDelete.status).toEqual(200)
+
+    const foundLevel = showLevelsAfterDelete.body[0].find(
+      (level: ILevelRepositoryDTO) => level.id === data.createdLevelId
+    )
+    expect(foundLevel).toBeUndefined()
   })
 })
