@@ -6,7 +6,7 @@ export const verifyAge = (age: number, dateBirth: Date): boolean => {
   const diffYears = today.diff(birthDate, 'years')
   const diffMonths = today.diff(birthDate, 'months') % 12
   const diffDays = today.diff(birthDate, 'days') % 30
-  const ageMatches = diffYears >= age && (diffYears > age || diffMonths >= 0) && (diffYears > age || diffMonths > 0 || diffDays >= 0)
+  const ageMatches = diffYears === age && (diffYears > age || diffMonths >= 0) && (diffYears > age || diffMonths > 0 || diffDays >= 0)
 
   return ageMatches
 }
