@@ -17,7 +17,7 @@ class DeleteLevelsUseCase {
 
     if (foundLevel.developers?.length) {
       throw new AppError(
-        `O nível ${foundLevel.level} não pode ser removido há ${foundLevel.developers?.length} desenvolvedor(es) associado a ele!`,
+        `O nível ${foundLevel.level} não pode ser removido há ${foundLevel.developers?.length} desenvolvedor(es) associado(os) a ele!`,
         501
       )
     }
