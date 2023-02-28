@@ -29,12 +29,13 @@
   "scripts": {
     "dev": "npx nodemon --exec ts-node src/server.ts",
     "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
-    "docker:migration:run": "docker-compose -f docker-compose-cli.yml run --rm cli yarn typeorm migration:run -d src/database/index.ts",
+    "docker:migration:run": "yarn typeorm migration:run -d src/database/index.ts",
     "lint": "eslint ./**/*.ts --fix",
     "prepare": "husky install",
     "test": "jest",
     "test:unit": "yarn test -- --watch -c jest-unit-config.ts",
-    "test:integration": "yarn test -- --watch -c jest-integration-config.ts"
+    "test:integration": "yarn test -- --watch -c jest-integration-config.ts",
+    "prepare-environment-docker": "docker-compose run --rm api yarn && yarn docker:migration:run && yarn"
   },
   "dependencies": {
     "cors": "^2.8.5",

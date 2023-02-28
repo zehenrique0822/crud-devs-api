@@ -17,7 +17,8 @@ services:
   api:
       container_name: apidevs
       build: .
-      command: yarn dev
+      command: >
+        sh -c "yarn && yarn docker:migration:run && yarn dev"
       env_file: .env
       ports:
         - "3333:3333"

@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"level\": \"Junior update\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"level\": \"Junior update\"\r\n}",
+							"raw": "{ \r\n    \"level\": \"Pleno\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/levels/8",
+							"raw": "http://localhost:3333/levels/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -60,7 +60,7 @@
 							"port": "3333",
 							"path": [
 								"levels",
-								"8"
+								"2"
 							]
 						}
 					},
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"level\": \"Junior fsdfds\"\r\n}",
+							"raw": "{ \r\n    \"level\": \"Junior\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -151,7 +151,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_level\": 2,\r\n    \"name\": \" Jean Felipe 2222\",\r\n    \"gender\": \"m\",\r\n    \"date_birth\": \"2000-04-20\",\r\n    \"age\": 22,\r\n    \"hobby\": \" Jogar videogame  \"\r\n}",
+							"raw": "{\r\n    \"id_level\": 34,\r\n    \"name\": \" Jean Felipe\",\r\n    \"gender\": \"m\",\r\n    \"date_birth\": \"2000-04-20\",\r\n    \"age\": 22,\r\n    \"hobby\": \"comer\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -224,7 +224,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_level\": 2,\r\n    \"name\": \" Teste update \",\r\n    \"gender\": \"f\",\r\n    \"date_birth\": \"2001-04-20\",\r\n    \"age\": 21,\r\n    \"hobby\": \" Jogar futebol  \"\r\n}",
+							"raw": "{\r\n    \"id_level\": 34,\r\n    \"name\": \"Cristiano Ronaldo\",\r\n    \"gender\": \"f\",\r\n    \"date_birth\": \"2001-04-20\",\r\n    \"age\": 21,\r\n    \"hobby\": \"Jogar futebol\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -252,7 +252,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3333/developers/6",
+							"raw": "http://localhost:3333/developers/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -260,13 +260,29 @@
 							"port": "3333",
 							"path": [
 								"developers",
-								"6"
+								"2"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Test Router",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333"
+				}
+			},
+			"response": []
 		}
 	]
 }
