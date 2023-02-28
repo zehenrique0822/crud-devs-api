@@ -10,7 +10,7 @@ class ListDevelopersUseCase {
     private readonly repository: IDevelopersRepository
   ) {}
 
-  async execute (pagination: IPagination): Promise<[Developers[], number]> {
+  async execute (pagination: IPagination): Promise<{ data: Developers[], count: number }> {
     const list = await this.repository.list(pagination)
     return list
   }

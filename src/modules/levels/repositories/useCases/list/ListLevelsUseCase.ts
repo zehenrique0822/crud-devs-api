@@ -10,7 +10,7 @@ class ListLevelsUseCase {
     private readonly repository: ILevelsRepository
   ) {}
 
-  async execute (pagination: IPagination): Promise<[Levels[], number]> {
+  async execute (pagination: IPagination): Promise<{ data: Levels[], count: number }> {
     const list = await this.repository.list(pagination)
     return list
   }

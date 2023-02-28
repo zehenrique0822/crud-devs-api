@@ -44,7 +44,7 @@ class LevelsRepository implements ILevelsRepository {
     return createdLevel
   }
 
-  async list (pagination: IPagination): Promise<[Levels[], number]> {
+  async list (pagination: IPagination): Promise<{ data: Levels[], count: number }> {
     const query = this.repository.createQueryBuilder('Levels')
       .leftJoinAndSelect("Levels.developers", "developers")
 
@@ -58,9 +58,9 @@ class LevelsRepository implements ILevelsRepository {
 
     query.orderBy('Levels.id', 'ASC')
 
-    const data = await query.getManyAndCount()
+    const [data, count] = await query.getManyAndCount()
 
-    return data
+    return { data, count }
   }
 
   async update (id: number, level: string): Promise<Levels | null> {

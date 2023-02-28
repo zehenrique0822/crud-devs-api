@@ -23,7 +23,7 @@ interface ILevelsRepository {
     relations?: string[],
     order?: { [key: string]: any },
   ) => Promise<Levels | null>
-  list: (pagination: IPagination) => Promise<[Levels[], number]>
+  list: (pagination: IPagination) => Promise<{ data: Levels[], count: number }>
   update: (id: number, level: string) => Promise<Levels | null>
   delete: (id: number) => Promise<void>
 }

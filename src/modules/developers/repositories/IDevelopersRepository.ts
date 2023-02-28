@@ -28,7 +28,7 @@ interface IDevelopersRepository {
     relations?: string[],
     order?: { [key: string]: any },
   ) => Promise<Developers | null>
-  list: (pagination: IPagination) => Promise<[Developers[], number]>
+  list: (pagination: IPagination) => Promise<{ data: Developers[], count: number }>
   update: (dto: IDeveloperRepositoryDTO) => Promise<Developers | null>
   delete: (id: number) => Promise<void>
 }
