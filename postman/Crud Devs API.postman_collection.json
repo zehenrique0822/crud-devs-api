@@ -23,7 +23,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/levels/11",
+							"raw": "http://localhost:3333/levels/delete/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -31,7 +31,8 @@
 							"port": "3333",
 							"path": [
 								"levels",
-								"11"
+								"delete",
+								"1"
 							]
 						}
 					},
@@ -52,7 +53,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/levels/2",
+							"raw": "http://localhost:3333/levels/edit/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -60,7 +61,8 @@
 							"port": "3333",
 							"path": [
 								"levels",
-								"2"
+								"edit",
+								"1"
 							]
 						}
 					},
@@ -81,14 +83,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/levels",
+							"raw": "http://localhost:3333/levels/new",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3333",
 							"path": [
-								"levels"
+								"levels",
+								"new"
 							]
 						}
 					},
@@ -151,7 +154,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_level\": 34,\r\n    \"name\": \" Jean Felipe\",\r\n    \"gender\": \"m\",\r\n    \"date_birth\": \"2000-04-20\",\r\n    \"age\": 22,\r\n    \"hobby\": \"comer\"\r\n}",
+							"raw": "{\r\n    \"id_level\": 1,\r\n    \"name\": \" Jean Felipe\",\r\n    \"gender\": \"m\",\r\n    \"date_birth\": \"2000-04-20\",\r\n    \"age\": 22,\r\n    \"hobby\": \"comer\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,14 +162,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/developers",
+							"raw": "http://localhost:3333/developers/new",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3333",
 							"path": [
-								"developers"
+								"developers",
+								"new"
 							]
 						}
 					},
@@ -232,7 +236,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/developers/2",
+							"raw": "http://localhost:3333/developers/edit/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -240,7 +244,8 @@
 							"port": "3333",
 							"path": [
 								"developers",
-								"2"
+								"edit",
+								"1"
 							]
 						}
 					},
@@ -252,7 +257,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3333/developers/2",
+							"raw": "http://localhost:3333/developers/delete/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -260,7 +265,8 @@
 							"port": "3333",
 							"path": [
 								"developers",
-								"2"
+								"delete",
+								"1"
 							]
 						}
 					},

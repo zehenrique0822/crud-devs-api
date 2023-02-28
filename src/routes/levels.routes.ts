@@ -11,9 +11,9 @@ const listLevelsController = new ListLevelsController()
 const updateLevelsController = new UpdateLevelsController()
 const deleteLevelsController = new DeleteLevelsController()
 
-levelsRouter.post('/', createLevelsController.handle)
+levelsRouter.post('/new', createLevelsController.handle)
 levelsRouter.get('/', listLevelsController.handle)
-levelsRouter.put('/:id', updateLevelsController.handle)
-levelsRouter.delete('/:id', deleteLevelsController.handle)
+levelsRouter.put('/edit/:id', updateLevelsController.handle)
+levelsRouter.delete('/delete/:id', deleteLevelsController.handle)
 
 export default levelsRouter
