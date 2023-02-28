@@ -27,7 +27,7 @@
 
 Na pasta postman, você pode encontrar um arquivo com a collection do postman, previamente configurada e que foi usada para testes, além dos testes de integração
 
-No link abaixo você pode acessar o swagger com a documentaçao da API
+No link abaixo você pode acessar o swagger com a documentação da API
 
 https://app.swaggerhub.com/apis/zehenrique0822/crud-devs-api/1.0.0
 #### Desenvolvido por José Henrique. 
