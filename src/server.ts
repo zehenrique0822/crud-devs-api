@@ -1,15 +1,25 @@
 import 'reflect-metadata'
-import './database/index'
+import { AppDataSource } from './database/index'
 import './shared/container'
 import express from 'express'
 import cors from 'cors'
 import routes from './routes'
 
-const app = express()
+AppDataSource.initialize()
+  .then(() => {
+    console.log('📦 Successfully connected with database!')
 
-app.use(cors())
-app.use(express.json())
+    const app = express()
 
-app.use(routes)
+    app.use(cors())
+    app.use(express.json())
 
-app.listen(process.env.API_PORT ?? 3333, () => { console.log('🔥 Server started at http://localhost:3333') })
+    app.use(routes)
+
+    app.listen(process.env.API_PORT ?? 3333, () => {
+      console.log('🔥 Server started at http://localhost:3333')
+    })
+  })
+  .catch((err) => {
+    console.error('❌ Error during Data Source initialization', err)
+  })

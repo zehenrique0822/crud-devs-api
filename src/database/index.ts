@@ -18,11 +18,3 @@ export const AppDataSource = new DataSource({
     './src/database/migrations/*.ts'
   ]
 })
-
-AppDataSource.initialize()
-  .then(() => {
-    console.log('📦 Successfully connected with database!')
-  })
-  .catch((err) => {
-    console.error('❌ Error during Data Source initialization', err)
-  })
