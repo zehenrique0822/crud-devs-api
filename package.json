@@ -34,7 +34,7 @@
     "prepare": "husky install",
     "test": "jest",
     "test:unit": "yarn test -- --watch -c jest-unit-config.ts",
-    "test:integration": "yarn test -- --watch -c jest-integration-config.ts"
+    "test:integration": "yarn test -- --watch --runInBand -c jest-integration-config.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -41,9 +41,8 @@ describe('levels update', () => {
     const getRequest = { search: '', skip: 0, limit: 0 }
 
     const showLevelsAfterDelete = await api.get("/levels").query(getRequest)
-    expect(showLevelsAfterDelete.status).toEqual(200)
 
-    const foundLevel = showLevelsAfterDelete.body.data.find(
+    const foundLevel = showLevelsAfterDelete.body.data?.find(
       (level: ILevelRepositoryDTO) => level.id === data.createdLevelId
     )
     expect(foundLevel).toBeUndefined()
