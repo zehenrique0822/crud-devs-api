@@ -16,11 +16,11 @@ class UpdateLevelsUseCase {
     const foundLevel = await this.repository.findOne({ id })
     if (!foundLevel) throw new AppError('O nível não existe!', 400)
 
-    const foundByLevel = await this.repository.find({
+    const foundLevelExists = await this.repository.find({
       level,
       id: Not(id)
     })
-    if (foundByLevel?.length) throw new AppError('Este nível já está cadastrado!', 400)
+    if (foundLevelExists?.length) throw new AppError('Este nível já está cadastrado!', 400)
 
     const updatedLevel = await this.repository.update(id, level)
     return updatedLevel
