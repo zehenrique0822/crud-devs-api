@@ -20,7 +20,7 @@ class UpdateLevelsUseCase {
       level,
       id: Not(id)
     })
-    if (foundLevelExists?.length) throw new AppError('Este nível já está cadastrado!', 400)
+    if (foundLevelExists?.length) throw new AppError('Este nível já está cadastrado!', 409)
 
     const updatedLevel = await this.repository.update(id, level)
     return updatedLevel
