@@ -7,7 +7,7 @@ describe('developers update', () => {
 
   it('Should create a level', async () => {
     const request = { level: 'Junior Developer' }
-    const response = await api.post('/levels').send(request)
+    const response = await api.post('/levels/new').send(request)
 
     expect(response.status).toEqual(201)
     expect(response.body.id).toBeDefined()
@@ -23,7 +23,7 @@ describe('developers update', () => {
       age: 22,
       hobby: "Jogar videogame"
     }
-    const response = await api.post('/developers').send(request)
+    const response = await api.post('/developers/new').send(request)
 
     expect(response.status).toEqual(201)
     expect(response.body.id).toBeDefined()
@@ -35,10 +35,10 @@ describe('developers update', () => {
     const request = { search: '', skip: 0, limit: 0 }
     const response = await api.get('/developers').query(request)
 
-    const foundCreatedDeveloper: IDeveloperRepositoryDTO = response?.body[0]?.find((level: IDeveloperRepositoryDTO) => level.id === data.createdDeveloperId)
+    const foundCreatedDeveloper: IDeveloperRepositoryDTO = response?.body.data?.find((level: IDeveloperRepositoryDTO) => level.id === data.createdDeveloperId)
 
     expect(response.status).toEqual(200)
-    expect(response.body[0].length).toBeGreaterThan(0)
+    expect(response.body.data.length).toBeGreaterThan(0)
     expect(foundCreatedDeveloper).toBeDefined()
   })
 
@@ -48,11 +48,11 @@ describe('developers update', () => {
       name: "Cristiano Ronaldo da Silva",
       gender: "m",
       date_birth: new Date("2000-04-02"),
-      age: 20,
+      age: 22,
       hobby: "Jogar futebol"
     }
 
-    const response = await api.put(`/developers/${data.createdDeveloperId}`).send(request)
+    const response = await api.put(`/developers/edit/${data.createdDeveloperId}`).send(request)
 
     expect(response.status).toEqual(200)
     expect(response.body.name).toEqual(request.name)
@@ -63,7 +63,7 @@ describe('developers update', () => {
   })
 
   it("Should delete developer", async () => {
-    const response = await api.delete(`/developers/${data.createdDeveloperId}`)
+    const response = await api.delete(`/developers/delete/${data.createdDeveloperId}`)
 
     expect(response.status).toEqual(204)
 
@@ -72,14 +72,14 @@ describe('developers update', () => {
     const showDevelopersAfterDelete = await api.get("/developers").query(getRequest)
     expect(showDevelopersAfterDelete.status).toEqual(200)
 
-    const foundLevel = showDevelopersAfterDelete.body[0].find(
+    const foundLevel = showDevelopersAfterDelete.body.data.find(
       (level: IDeveloperRepositoryDTO) => level.id === data.createdDeveloperId
     )
     expect(foundLevel).toBeUndefined()
   })
 
   it("Should delete level", async () => {
-    const response = await api.delete(`/levels/${data.createdLevelId}`)
+    const response = await api.delete(`/levels/delete/${data.createdLevelId}`)
 
     expect(response.status).toEqual(204)
 
@@ -88,7 +88,7 @@ describe('developers update', () => {
     const showLevelsAfterDelete = await api.get("/levels").query(getRequest)
     expect(showLevelsAfterDelete.status).toEqual(200)
 
-    const foundLevel = showLevelsAfterDelete.body[0].find(
+    const foundLevel = showLevelsAfterDelete.body.data.find(
       (level: ILevelRepositoryDTO) => level.id === data.createdLevelId
     )
     expect(foundLevel).toBeUndefined()
